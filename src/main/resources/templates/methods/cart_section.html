@@ -1,0 +1,264 @@
+<section th:fragment="cart_section" class="cart-section py-5">
+  <head>
+    <style>
+      /* Стили для скрытого описания товара */
+      .product-description-container {
+        overflow: hidden;
+        max-height: 60px; /* Ограничиваем видимую часть для описания */
+        transition: max-height 0.3s ease-in-out;
+      }
+
+      .product-description-container.expanded {
+        max-height: none; /* Когда блок развернут, показываем весь текст */
+      }
+
+      .product-description {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      #toggleDescription {
+        background: none;
+        color: #007bff;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      #toggleDescription:hover {
+        text-decoration: underline;
+      }
+
+      /* Стили для остальной страницы (без изменений) */
+      .product-page {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      .product-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .product-image-container {
+        flex: 1;
+        max-width: 100%;
+        padding-right: 20px;
+      }
+
+      .product-image-wrapper {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .product-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: contain;
+      }
+
+      .product-details {
+        flex: 1;
+        max-width: 100%;
+      }
+
+      .product-info {
+        padding: 20px;
+      }
+
+      .product-sku {
+        font-size: 1rem;
+        color: #888;
+        margin-bottom: 10px;
+      }
+
+      .product-name {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      .product-price .price {
+        font-size: 1.5rem;
+        color: #28a745;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .product-meta p {
+        font-size: 1rem;
+        margin: 5px 0;
+      }
+
+      .product-actions {
+        margin-top: 20px;
+      }
+
+      .product-actions label {
+        font-size: 1rem;
+        margin-right: 10px;
+      }
+
+      .quantity-input {
+        width: 60px;
+        padding: 5px;
+        font-size: 1rem;
+        margin-right: 15px;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 15px;
+      }
+
+      .add-to-cart,
+      .cancel-link,
+      .delete-link {
+        padding: 10px 20px;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .add-to-cart {
+        background-color: #28a745;
+        color: white;
+      }
+
+      .add-to-cart:hover {
+        background-color: #218838;
+      }
+
+      .delete-link {
+        background-color: #dc3545;
+        color: white;
+      }
+
+      .delete-link:hover {
+        background-color: #c82333;
+      }
+
+      .cancel-link {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .cancel-link:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .product-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .product-details {
+          text-align: center;
+        }
+
+        .product-image-container {
+          margin-bottom: 20px;
+        }
+      }
+      /* Стили для обрезки текста в поле описания */
+      .product-description .truncated-info {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Показываем только две строки */
+        -webkit-box-orient: vertical;
+      }
+
+      /* Кнопка развернуть */
+      #toggleDescriptionBtn {
+        background: none;
+        border: none;
+        color: #007bff;
+        font-size: 1rem;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: underline;
+      }
+
+      #toggleDescriptionBtn:hover {
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <div th:object="${product}">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="product-container row">
+
+        <!-- Левый блок: изображение товара -->
+        <div class="product-image-container col-md-6">
+          <div class="product-image-wrapper">
+            <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}" alt="Товар" class="product-image">
+          </div>
+        </div>
+
+        <!-- Правый блок: информация о товаре -->
+        <div class="product-details col-md-6">
+          <div class="product-info">
+            <!-- Название товара -->
+            <h1 class="product-name display-5 fw-bolder" th:text="${product.name}">Shop item template</h1>
+
+            <!-- Цена товара -->
+            <div class="product-price fs-5 mb-5">
+              <span th:text="${product.price}+' рублей'">$40.00</span>
+            </div>
+
+            <!-- Описание товара с возможностью развернуть -->
+            <div class="product-description">
+              <div class="product-info-text">
+                <p th:text="${product.info}" class="lead truncated-info"></p>
+              </div>
+              <!-- Кнопка развернуть -->
+              <button type="button" onclick="toggleDescription(this)" class="btn btn-link" id="toggleDescriptionBtn">Показать больше</button>
+            </div>
+
+            <!-- Бренд товара -->
+            <p class="product-brand lead" th:text="'Бренд: ' + ${product.brand.name}"></p>
+
+            <!-- Страна производителя -->
+            <p class="product-country lead" th:text="'Страна: ' + ${product.country.name}"></p>
+
+            <!-- Тип товара -->
+            <p class="product-type lead" th:text="'Тип: ' + ${product.furnitureType.name}"></p>
+
+            <!-- Выбор количества и добавление в корзину -->
+            <div class="product-actions d-flex">
+              <a th:if="${isAdmin}" th:href="@{/products/edit/{id}(id=${product.id})}">Редактировать</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleDescription(button) {
+      var descriptionText = button.previousElementSibling.querySelector('p'); // Находим текстовое поле с описанием
+
+      // Проверяем текущий стиль и переключаем состояние
+      if (descriptionText.style.webkitLineClamp === 'none') {
+        descriptionText.style.webkitLineClamp = '2'; // Скрываем лишние строки
+        button.textContent = 'Показать больше'; // Изменяем текст кнопки
+      } else {
+        descriptionText.style.webkitLineClamp = 'none'; // Показываем весь текст
+        button.textContent = 'Скрыть'; // Изменяем текст кнопки
+      }
+    }
+  </script>
+
+</section>
+

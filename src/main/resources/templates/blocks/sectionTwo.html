@@ -1,0 +1,20 @@
+<section class="sectionTwo" th:fragment="sectionTwo">
+    <form class="sort" action="/products" method="get">
+        <select class="form-select" name="sort">
+            <option value="">Сортировать по</option>
+            <option value="asc" th:selected="${sort == 'asc'}">По возрастанию цены</option>
+            <option value="desc" th:selected="${sort == 'desc'}">По убыванию цены</option>
+        </select>
+        <button type="submit" class="add-to-cart-button">Применить</button>
+    </form>
+    <div class="product-container">
+        <div th:each="product : ${products}" class="product-card">
+            <a th:href="@{/products/item/{id}(id=${product.id})}" style="color: inherit; text-decoration: none;">
+                <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}" alt="Товар 1" class="product-image">
+                <h2 th:text="${product.name}" class="product-title">Товар 1</h2>
+                <p th:text="${product.price}+' рублей'" class="product-price">Цена: <span>1999₽</span></p>
+            </a>
+        </div>
+    </div>
+
+</section>

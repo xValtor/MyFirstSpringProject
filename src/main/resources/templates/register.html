@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-form {
+            width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-form h2 {
+            margin-bottom: 20px;
+        }
+        .login-form input {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form button:hover {
+            background-color: #218838;
+        }
+        .login-form form{
+            display: flex;
+            flex-direction: column;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="login-form">
+    <h1>Регистрация</h1>
+<form th:action="@{/register}" th:object="${user}" method="post">
+    <label for="username">Логин:</label>
+    <input type="text" id="username" th:field="*{username}" />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" />
+
+    <label for="phone">Пароль:</label>
+    <input type="text" id="phone" th:field="*{phone}" />
+
+    <label for="firstName">Пароль:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" />
+
+    <label for="lastName">Пароль:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" />
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" th:field="*{password}" />
+
+    <label for="confirmPassword">Повторите пароль:</label>
+    <input type="password" id="confirmPassword" th:field="*{confirmPassword}" />
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+    <button type="submit">Зарегистрировать</button>
+</form>
+</div>
+</body>
+</html>

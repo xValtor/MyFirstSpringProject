@@ -1,0 +1,454 @@
+body{
+    background-color: rgb(243, 243, 243);
+
+
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+footer{
+    margin:-8px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-grow: 1;
+}
+/* Фон для футера */
+footer.bg-dark {
+    background-color: #343a40; /* Темный фон */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+
+}
+
+/* Контейнер с отступами */
+footer .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+/* Строка с элементами, выравнивание по центру и между */
+footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Выравнивание для маленьких колонок */
+footer .col-auto {
+    flex: 0 0 auto;
+}
+
+/* Текст маленького размера */
+footer .small {
+    font-size: 80%;
+}
+
+/* Ссылки с белым цветом для футера */
+footer .link-light {
+    color: #f8f9fa;
+    text-decoration: none; /* Без подчеркивания */
+}
+
+footer .link-light:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+}
+
+/* Цвет текста для разделителей между ссылками */
+footer .text-white {
+    color: #ffffff;
+}
+
+/* Для пробела и точек между ссылками */
+footer .mx-1 {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+/* Разделитель в виде точки */
+footer .text-white .mx-1::before {
+    content: "\00b7"; /* Символ "·" */
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: #7ea7e4;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+.right>form>input{
+    height: 3em;
+    width: 60%;
+    border-radius: 16px;
+    border: none;
+}
+.right>form{
+    width: 60%;
+}
+.right{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.left{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttons{
+    width: 20%;
+    display: flex;
+    font-size:30px;
+    justify-content: space-around;
+}
+.number{
+    display: flex;
+    flex-direction: row;
+}
+.main{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 200px;
+}
+.one{
+    background-color: white; /* Цвет фона карточки */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    width: 300px; /* Ширина карточки */
+    padding: 20px; /* Отступы внутри карточки */
+    margin:0 15px 0 15px; /* Отступы между карточками */
+}
+.one>article>h1{
+    text-align: center;
+}
+.custom-btn{
+    margin-top: 50px;
+    text-align: center;
+}
+
+.two{
+    margin-left: 5vh;
+    width: 80%;
+    position: relative;
+}
+.two>.sectionTwo{
+    width: 85%;
+}
+.sort{
+    background-color: white; /* Цвет фона карточки */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 20px; /* Отступы внутри карточки */
+    margin-bottom: 30px;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap; /* Позволяет карточкам располагаться в несколько строк */
+    border-radius: 10px;
+    justify-content: space-between;
+    margin: 0;
+
+}
+
+.product-card {
+    background-color: white; /* Цвет фона карточки */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    width: 300px; /* Ширина карточки */
+    text-align: center; /* Центрируем текст */
+    padding: 20px; /* Отступы внутри карточки */
+    margin-bottom: 100px;
+
+}
+
+.product-image {
+    max-width: 100%; /* Максимальная ширина изображения */
+    border-radius: 10px; /* Закругленные углы изображения */
+}
+
+.product-title {
+    font-size: 1.5em; /* Размер шрифта заголовка */
+
+    margin: 10px 0; /* Отступы сверху и снизу */
+}
+
+.product-description {
+    font-size: 1em; /* Размер шрифта описания */
+    color: #666; /* Цвет текста описания */
+}
+
+.product-price {
+    font-size: 1.2em; /* Размер шрифта цены */
+    margin: 15px 0; /* Отступы сверху и снизу */
+}
+
+.add-to-cart-button {
+    background-color: #007bff; /* Цвет кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Без рамки */
+    border-radius: 5px; /* Закругленные углы кнопки */
+    padding: 10px 15px; /* Отступы внутри кнопки */
+    cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+.add-to-cart-button:hover {
+    background-color: #0056b3; /* Цвет кнопки при наведении */
+}
+
+
+
+.city-selector {
+    position: relative; /* Позиционирование для dropdown */
+    background-color: white; /* Цвет фона селектора */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    padding: 20px; /* Отступы внутри селектора */
+    border-radius: 20px;
+}
+
+#selected-city {
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 18px; /* Размер текста */
+}
+
+.dropdown-content {
+    display: none; /* Скрыто по умолчанию */
+    position: absolute; /* Абсолютное позиционирование */
+    background-color: white; /* Цвет фона выпадающего меню */
+    min-width: 160px; /* Минимальная ширина меню */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    z-index: 1; /* Поверх других элементов */
+}
+
+.city-option {
+    padding: 10px; /* Отступы внутри опции */
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 18px; /* Размер текста */
+}
+
+.city-option:hover {
+    background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+
+.form-select:focus {
+    border-color: #80bdff; /* Цвет рамки при фокусе */
+    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.25); /* Легкая тень */
+    outline: 0; /* Убираем стандартную обводку */
+}
+.form-select{
+    height: 30px;
+    background-color: white; /* Цвет фона карточки */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-weight: bold;
+}
+
+
+/* При наведении на кнопку */
+.add-to-cart-button:hover {
+    background-color: #0056b3; /* Темный синий при наведении */
+    border-color: #0056b3;
+}
+
+/* Мобильная адаптация: уменьшаем размеры на маленьких экранах */
+@media (max-width: 576px) {
+    .sort {
+        flex-direction: column; /* Переводим элементы в столбик */
+        align-items: flex-start; /* Выравнивание по левому краю */
+    }
+
+    .form-select {
+        width: 100%; /* Ширина селекта на мобильных устройствах */
+    }
+
+    .add-to-cart-button {
+        width: 100%; /* Кнопка на весь экран */
+        margin-top: 10px; /* Отступ сверху */
+    }
+}
+/*!* Стили для секции корзины *!*/
+/*.cart-section {*/
+/*    background-color: #f9f9f9; !* Светлый фон для секции *!*/
+/*    border-radius: 10px;*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+/*    padding: 30px 0;*/
+/*}*/
+
+/*.cart-section .container {*/
+/*    max-width: 1200px; !* Максимальная ширина контейнера *!*/
+/*}*/
+
+/*!* Стили для изображения *!*/
+/*.cart-section .card-img-top {*/
+/*    object-fit: cover; !* Обеспечивает правильное обрезание изображения *!*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/*!* Стили для блока с информацией о товаре *!*/
+/*.cart-section .col-md-6 h1 {*/
+/*    font-size: 2.5rem;*/
+/*    font-weight: bold;*/
+/*    color: #333;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+/*.col-md-6>.row1{*/
+
+/*}*/
+/*.col-md-6>.row2{*/
+/*    height: 2000px;*/
+/*}*/
+/*.col-md-6 image{*/
+/*    width: 500px;*/
+/*    height: 400px;*/
+/*}*/
+
+/*.cart-section .col-md-6 .small {*/
+/*    font-size: 0.9rem;*/
+/*    color: #6c757d; !* Серый цвет для SKU *!*/
+/*}*/
+
+/*.cart-section .col-md-6 .fs-5 {*/
+/*    font-size: 1.25rem;*/
+/*    color: #d9534f;*/
+/*}*/
+
+/*.cart-section .col-md-6 .fs-5 span {*/
+/*    margin-right: 15px;*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*.cart-section .col-md-6 .lead {*/
+/*    font-size: 1rem;*/
+/*    color: #555;*/
+/*    line-height: 1.5;*/
+/*    margin-bottom: 25px;*/
+/*}*/
+
+/*!* Стили для инпута количества товара *!*/
+/*.cart-section .form-control {*/
+/*    font-size: 1rem;*/
+/*    padding: 0.5rem;*/
+/*    border-radius: 5px;*/
+/*    border: 1px solid #ced4da;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.cart-section .form-control:focus {*/
+/*    border-color: #007bff;*/
+/*    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);*/
+/*}*/
+
+/*!* Стили для кнопки "Добавить в корзину" *!*/
+/*.cart-section .btn {*/
+/*    font-size: 1.1rem;*/
+/*    padding: 0.75rem 1.5rem;*/
+/*    border-radius: 5px;*/
+/*    background-color: #007bff;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*.cart-section .btn:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
+
+/*.cart-section .btn i {*/
+/*    font-size: 1.2rem;*/
+/*}*/
+
+/*!* Адаптивность *!*/
+/*@media (max-width: 768px) {*/
+/*    .cart-section .col-md-6 {*/
+/*        text-align: center;*/
+/*        margin-bottom: 20px;*/
+/*    }*/
+
+/*    .cart-section .btn {*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    .cart-section .form-control {*/
+/*        max-width: 80px;*/
+/*        margin-bottom: 15px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 576px) {*/
+/*    .cart-section .col-md-6 h1 {*/
+/*        font-size: 2rem;*/
+/*    }*/
+
+/*    .cart-section .lead {*/
+/*        font-size: 0.9rem;*/
+/*    }*/
+
+/*    .cart-section .fs-5 {*/
+/*        font-size: 1rem;*/
+/*    }*/
+/*}*/
+/*.row{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-around;*/
+/*}*/
+/*.cart-section .col-md-6{*/
+/*    display: flex;*/
+/*}*/
+/* Кнопка */
+.toggle-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #ddd;
+}
+
+/* Скрытый блок по умолчанию */
+.content-block {
+    max-height: 0; /* Блок скрыт */
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 20px; /* Убираем вертикальные отступы для скрытого состояния */
+    box-sizing: border-box;
+}
+
+/* Когда блок активен */
+.content-block.active {
+    max-height: 400px; /* Максимальная высота, чтобы блок раскрылся */
+    opacity: 1;
+    padding: 20px; /* Отступы при раскрытии */
+}
+li{
+    list-style: none;
+}
+
+

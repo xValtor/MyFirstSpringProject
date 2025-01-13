@@ -1,0 +1,58 @@
+<form class="center" th:fragment="product_section">
+  <div class="form-container" >
+    <h2>Добавить товар</h2>
+    <form id="productForm"  action="#" th:action="@{/products}" th:object="${product}" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Название товара</label>
+        <input type="text" id="name" name="name" th:field="*{name}" required >
+        <div class="error-message" id="nameError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Описание товара</label>
+        <textarea id="description" name="description" rows="4" required th:field="*{info}"></textarea>
+        <div class="error-message" id="descriptionError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Цена товара</label>
+        <input type="number" id="price" name="price" required min="0" th:field="*{price}">
+        <div class="error-message" id="priceError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Изображение товара</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <div class="error-message" id="imageError"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="furnitureType">Категория</label>
+        <select id="furnitureType" th:field="*{furnitureType}" required>
+          <option value="">Выберите категорию</option>
+          <option th:each="type : ${furnitureTypes}" th:value="${type.id}" th:text="${type.name}"></option>
+        </select>
+        <div class="error-message" id="categoryError"></div>
+      </div>
+      <div class="form-group">
+        <label for="brand">Категория</label>
+        <select id="brand" th:field="*{brand}" required>
+          <option value="">Выберите категорию</option>
+          <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+        </select>
+        <div class="error-message" id="categoryError"></div>
+      </div>
+      <div class="form-group">
+        <label for="country">Страна изготовитель</label>
+        <select id="country" th:field="*{country}" required>
+          <option value="">Выберите категорию</option>
+          <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.name}"></option>
+        </select>
+        <div class="error-message" id="categoryError"></div>
+      </div>
+
+
+      <button type="submit" class="btn">Добавить товар</button>
+    </form>
+  </div>
+</form>

@@ -1,0 +1,75 @@
+<div th:fragment="header">
+  <header>
+    <div class="left">
+      <a href="/products">
+        <img src="/images/logo.png" style="height: 80px;width: 110px;" alt="">
+      </a>
+      <a th:href="@{/products/adminPanel}">
+        <button class="add-to-cart-button" th:if="${isAdmin}" type="button">Админская кнопка</button>
+      </a>
+
+
+    </div>
+    <div class="right">
+      <form action="/products" method="get">
+        <input type="text" name="search" placeholder="Поиск товара" th:value="${search}"/>
+        <button type="submit" class="add-to-cart-button">Найти</button>
+      </form>
+      <div class="number">
+        <p style="font-size: 18px; font-weight: bold;" ><i class="bi bi-telephone"  style="font-size: 20px;"></i>&nbsp <span>8 985 583 07 66</span>
+        </p>
+      </div>
+      <div class="buttons">
+        <div >
+          <div th:if="${isAuthenticated}">
+            <form action="/logout" method="post" th:action="@{/logout}">
+              <button class="add-to-cart-button" type="submit">Выйти</button>
+            </form>
+          </div>
+          <div th:if="${!isAuthenticated}">
+            <a href="/login">
+              <button class="add-to-cart-button">Войти</button>
+            </a>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const selectedCity = document.getElementById('selected-city');
+        const cityDropdown = document.getElementById('city-dropdown');
+
+        // Проверяем, есть ли сохраненный город в localStorage
+        const savedCity = localStorage.getItem('selectedCity');
+        if (savedCity) {
+          selectedCity.textContent = savedCity; // Устанавливаем сохраненный город
+        }
+
+        // Показать или скрыть выпадающее меню при клике на название города
+        selectedCity.addEventListener('click', () => {
+          cityDropdown.style.display = cityDropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Обработчик клика по опциям города
+        const cityOptions = document.querySelectorAll('.city-option');
+        cityOptions.forEach(option => {
+          option.addEventListener('click', () => {
+            selectedCity.textContent = option.textContent; // Обновить выбранный город
+            localStorage.setItem('selectedCity', option.textContent); // Сохранить выбранный город в localStorage
+            cityDropdown.style.display = 'none'; // Скрыть выпадающее меню
+          });
+        });
+
+        // Закрыть меню при клике вне его
+        window.addEventListener('click', (event) => {
+          if (!event.target.matches('#selected-city')) {
+            cityDropdown.style.display = 'none';
+          }
+        });
+      });
+    </script>
+  </header>
+</div>

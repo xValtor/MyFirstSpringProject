@@ -1,0 +1,82 @@
+<div th:fragment="sectionAdmin">
+    <style>
+        /* Добавляем границы между ячейками */
+        table {
+            border-collapse: separate;
+            border-spacing: 0 10px; /* Расстояние между строками */
+        }
+        th, td {
+            border: 1px solid #dee2e6; /* Цвет границы */
+            padding: 10px; /* Отступы внутри ячеек */
+            background-color: #ffffff; /* Цвет фона ячеек */
+        }
+        th {
+            background-color: #f8f9fa; /* Цвет фона заголовков */
+        }
+        #ui{
+            margin-left: 150px;
+        }
+        #ui>h2{
+            margin-left: -150px;
+        }
+    </style>
+    <div id="ui" class="container1 mt-5">
+        <h2>Список пользователей</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Логин</th>
+                <th>Электронная почта</th>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Номер телефона</th>
+                <th>Дата регистрации</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}">1</td>
+                <td th:text="${user.username}">user1</td>
+                <td th:text="${user.email}">email</td>
+                <td th:text="${user.firstName}">firstname</td>
+                <td th:text="${user.lastName}">lastname</td>
+                <td th:text="'+7'+${user.phone}">phone</td>
+                <td th:text="${user.registrationDate}">registrationDate</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="ui2" class="container2 mt-5">
+        <h2>Список товаров</h2>
+        <a href="/products/new">Добавить новый товар</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Название товара</th>
+                <th>Цена</th>
+                <th>Бренд</th>
+                <th>Категория</th>
+                <th>Страна изготовитель</th>
+                <th>Дата добавления</th>
+                <th>Удалить</th>
+                <th>Редактировать</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}">1</td>
+                <td th:text="${product.name}">name</td>
+                <td th:text="${product.price}">price</td>
+                <td th:text="${product.brand.name}">brand</td>
+                <td th:text="${product.furnitureType.name}">furnitureType</td>
+                <td th:text="${product.country.name}">country</td>
+                <td th:text="${product.registrationDate}">registrationDate</td>
+                <td><a th:href="@{/products/delete/{id}(id=${product.id})}" onclick="return confirm('Вы уверены?');" class="delete-link">Удалить</a></td>
+                <td><a th:href="@{/products/edit/{id}(id=${product.id})}"  class="delete-link">Редактировать</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
